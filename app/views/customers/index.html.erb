@@ -1,0 +1,14 @@
+<% provide(:title, 'All customers') %>
+<h1>All customers</h1>
+
+<ul class="users">
+  <% @customer.each do |customer| %>
+    <li>
+      <%= link_to customer.name, customer %>
+      <% if current_customer.admin? && !current_customer?(customer) %>
+    | <%= link_to "delete", customer, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>
+    </li>
+  <% end %>
+</ul>

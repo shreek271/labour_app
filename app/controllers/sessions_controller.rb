@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   	customer = Customer.find_by(email: params[:session][:email].downcase)
     if customer && customer.authenticate(params[:session][:password])
     log_in customer
-      redirect_to customer
+      redirect_back_or customer
     else
       flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
