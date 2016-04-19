@@ -1,0 +1,6 @@
+== README
+
+a simle entertainment app
+
+using the basic concepts of the ruby on rails. :) :)
+<tt>rake doc:app</tt>.
