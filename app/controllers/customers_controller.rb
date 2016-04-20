@@ -10,6 +10,7 @@ class CustomersController < ApplicationController
 
   def show
   	@customer = Customer.find(params[:id])
+    @microposts = @customer.microposts
   end
 
   def new
@@ -54,16 +55,8 @@ class CustomersController < ApplicationController
   	   :country, :password, :password_confirmation)
   end
 
-  def logged_in_customer
-    unless logged_in?
-      store_location
-      flash[:danger] = "please log in."
-      redirect_to login_url
-    end
-  end
-
   def correct_customer
-    @customer = Customer.find(params:[id])
+    @customer = Customer.find(params[:id])
     redirect_to (root_url) unless current_customer?(@customer)
   end
 

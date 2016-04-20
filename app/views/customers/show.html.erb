@@ -20,5 +20,14 @@
 	</div>
 </div>
 
+<div class="col-md-8">
+    <% if @customer.microposts.any? %>
+      <h3>Microposts (<%= @customer.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+    <% end %>
+  </div>
+
 
 		

@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-
-  resources :customers
   
   root          'main_pages#home'
   get 'about'   =>'main_pages#about'
@@ -12,5 +10,8 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   
+  resources :customers
+  resources :account_activations, only: [:edit]
+  resources :microposts,          only: [:create, :destroy]
 
 end

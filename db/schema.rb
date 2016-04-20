@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419120641) do
+ActiveRecord::Schema.define(version: 20160420072707) do
 
   create_table "customers", force: :cascade do |t|
     t.string   "name"
@@ -19,12 +19,26 @@ ActiveRecord::Schema.define(version: 20160419120641) do
     t.date     "dob"
     t.string   "gender"
     t.string   "country"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "password_digest"
     t.boolean  "admin"
+    t.string   "activation_digest"
+    t.boolean  "activated",         default: false
+    t.datetime "activated_at"
   end
 
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true
+
+  create_table "microposts", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "customer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "photo"
+  end
+
+  add_index "microposts", ["customer_id", "created_at"], name: "index_microposts_on_customer_id_and_created_at"
+  add_index "microposts", ["customer_id"], name: "index_microposts_on_customer_id"
 
 end
