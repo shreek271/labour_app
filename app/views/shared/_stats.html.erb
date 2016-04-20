@@ -1,0 +1,15 @@
+<% @customer ||= current_customer %>
+<div>
+  <a href="<%= following_customer_path(@customer) %>">
+    <strong>
+      <%= @customer.following.count %>
+    </strong>
+    following
+  </a>
+  <a href="<%= followers_customer_path(@customer) %>">
+    <strong>
+      <%= @customer.followers.count %>
+    </strong>
+    followers
+  </a>
+</div>

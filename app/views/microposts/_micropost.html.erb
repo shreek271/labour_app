@@ -4,6 +4,9 @@
   <%= image_tag micropost.photo.url if micropost.photo? %>
   <span class="timestamp">
     Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+    <br>
+    <%= link_to "comment", "#" %>
+    <%= link_to "like", "#" %>
     <% if current_customer?(micropost.customer) %>
       <%= link_to "delete", micropost, method: :delete,
                                        data: { confirm: "You sure?" } %>
